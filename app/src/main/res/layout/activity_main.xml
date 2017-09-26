@@ -7,21 +7,19 @@
     android:background="@color/colorWhite"
     tools:context="com.example.iriscode.coma.MainActivity">
 
-    <fragment android:name="com.example.iriscode.coma.HomeFragment"
+    <fragment
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="56dp"/>
+        android:layout_marginBottom="56dp"
+        />
 
-    <android.support.design.widget.BottomNavigationView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/navigation"
+    <android.support.design.internal.BottomNavigationMenuView
+        android:id="@+id/bottom_bar"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/navigation_items" />
-
-
+        app:menu="@menu/navigation_items"
+     />
 
 </RelativeLayout>
