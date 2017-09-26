@@ -7,14 +7,14 @@
     android:background="@color/colorWhite"
     tools:context="com.example.iriscode.coma.MainActivity">
 
-    <fragment
+    <fragment class="com.example.iriscode.coma.HomeFragment"
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="56dp"
         />
 
-    <android.support.design.internal.BottomNavigationMenuView
+    <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_bar"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"

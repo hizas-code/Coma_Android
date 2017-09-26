@@ -12,14 +12,14 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
-    HomeFragment fragmentHome = new HomeFragment();
-    ProfileFragment fragmentProfile = new ProfileFragment();
-    SettingFragment fragmentSetting = new SettingFragment();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        HomeFragment fragmentHome = new HomeFragment();
+        ProfileFragment fragmentProfile = new ProfileFragment();
+        SettingFragment fragmentSetting = new SettingFragment();
 
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -28,16 +28,16 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.add(fragmentSetting, "Setting");
         fragmentTransaction.commit();
 
-        setFragment("Home");
+        //setFragment("Home");
         BottomNavigationView bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_bar);
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
+            @Overridew
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 return false;
             }
         });
     }
-
+/*
     protected void setFragment(String fragmentName){
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         switch(fragmentName){
@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
             case "Setting" :
                 fragmentTransaction.replace(R.id.fragment_container, fragmentSetting);
         }
-    }
+    }*/
 
-    public
 }
