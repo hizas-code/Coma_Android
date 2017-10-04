@@ -12,14 +12,14 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    static HomeFragment fragmentHome = new HomeFragment();
+    static ProfileFragment fragmentProfile = new ProfileFragment();
+    static SettingFragment fragmentSetting = new SettingFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        HomeFragment fragmentHome = new HomeFragment();
-        ProfileFragment fragmentProfile = new ProfileFragment();
-        SettingFragment fragmentSetting = new SettingFragment();
 
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -28,26 +28,32 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.add(fragmentSetting, "Setting");
         fragmentTransaction.commit();
 
-        //setFragment("Home");
+        setFragment("Home");
         BottomNavigationView bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_bar);
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Overridew
+            @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()) {
+                    case R.id.home_item : setFragment("Home"); break;
+                    case R.id.profile_item : setFragment("Profile"); break;
+                    case R.id.setting_item : setFragment("Setting"); break;
+                }
                 return false;
             }
         });
     }
-/*
+
     protected void setFragment(String fragmentName){
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         switch(fragmentName){
             case "Home" :
-                fragmentTransaction.replace(R.id.fragment_container, fragmentHome);
+                fragmentTransaction.replace(R.id.fragment_container, fragmentHome); break;
             case "Profile" :
-                fragmentTransaction.replace(R.id.fragment_container, fragmentProfile);
+                fragmentTransaction.replace(R.id.fragment_container, fragmentProfile); break;
             case "Setting" :
-                fragmentTransaction.replace(R.id.fragment_container, fragmentSetting);
+                fragmentTransaction.replace(R.id.fragment_container, fragmentSetting); break;
         }
-    }*/
+        fragmentTransaction.commit();
+    }
 
 }
