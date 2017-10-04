@@ -29,15 +29,16 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
 
         setFragment("Home");
-        BottomNavigationView bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_bar);
+        final BottomNavigationView bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_bar);
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId()) {
-                    case R.id.home_item : setFragment("Home"); break;
-                    case R.id.profile_item : setFragment("Profile"); break;
-                    case R.id.setting_item : setFragment("Setting"); break;
+                    case R.id.home_item : setFragment("Home"); bottomNavigation.getMenu().getItem(0).setChecked(true); break;
+                    case R.id.profile_item : setFragment("Profile"); bottomNavigation.getMenu().getItem(1).setChecked(true); break;
+                    case R.id.setting_item : setFragment("Setting"); bottomNavigation.getMenu().getItem(2).setChecked(true); break;
                 }
+
                 return false;
             }
         });
